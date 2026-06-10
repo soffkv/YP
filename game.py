@@ -4,7 +4,7 @@ import random
 import os
 import sys
 
-# ------------------- ФУНКЦИЯ ДЛЯ ПОИСКА ФАЙЛА -------------------
+# ФУНКЦИЯ ДЛЯ ПОИСКА ФАЙЛА
 def get_resource_path(filename):
     """Возвращает путь к файлу (работает и в собранном exe)"""
     if getattr(sys, 'frozen', False):
@@ -13,7 +13,7 @@ def get_resource_path(filename):
         base_path = os.path.dirname(os.path.abspath(__file__))
     return os.path.join(base_path, filename)
 
-# ------------------- ЗАГРУЗКА СЛОВАРЯ -------------------
+# ЗАГРУЗКА СЛОВАРЯ
 def load_words(filename="words.txt"):
     """Загружает слова из текстового файла (по одному слову в строке)"""
     filepath = get_resource_path(filename)
@@ -49,7 +49,7 @@ def load_words(filename="words.txt"):
         messagebox.showerror("Ошибка", f"Не удалось прочитать файл {filepath}:\n{e}")
         return []
 
-# ------------------- СОХРАНЕНИЕ СЛОВА В СЛОВАРЬ -------------------
+#  СОХРАНЕНИЕ СЛОВА В СЛОВАРЬ
 def save_word_to_file(word):
     """Сохраняет новое слово в файл словаря"""
     filepath = get_resource_path("words.txt")
@@ -70,7 +70,7 @@ def save_word_to_file(word):
     except Exception as e:
         return False, f"Ошибка при сохранении: {e}"
 
-# ------------------- ФУНКЦИЯ ДЛЯ СОЗДАНИЯ СКРУГЛЁННОЙ РАМКИ -------------------
+# ФУНКЦИЯ ДЛЯ СОЗДАНИЯ СКРУГЛЁННОЙ РАМКИ 
 def _create_rounded_rect(self, x1, y1, x2, y2, radius=30, **kwargs):
     """Создаёт прямоугольник с сильно скруглёнными углами"""
     width = x2 - x1
@@ -198,7 +198,7 @@ class WordleGame:
         self.root.configure(bg=FIRST_BG)
         self.root.bind("<Escape>", lambda e: self.root.quit())
         
-        # Получаем размеры окна
+        # Размеры окна
         self.root.update_idletasks()
         window_width = self.root.winfo_width()
         window_height = self.root.winfo_height()
