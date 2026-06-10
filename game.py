@@ -17,37 +17,15 @@ def get_resource_path(filename):
 def load_words(filename="words.txt"):
     """Загружает слова из текстового файла (по одному слову в строке)"""
     filepath = get_resource_path(filename)
-    
-    if not os.path.exists(filepath):
-        messagebox.showerror(
-            "Ошибка", 
-            f"Файл {filename} не найден!\n\nИскали по пути:\n{filepath}\n\n"
-            "Создайте файл words.txt в папке с программой\n"
-            "и добавьте в него слова из 5 букв (по одному на строку)."
-        )
-        return []
-    
     words = []
-    try:
-        with open(filepath, "r", encoding="utf-8") as f:
-            for line in f:
-                word = line.strip().upper()
-                if len(word) == 5 and word.isalpha():
-                    words.append(word)
-        
-        if not words:
-            messagebox.showerror(
-                "Ошибка", 
-                f"Файл {filename} не содержит слов из 5 букв!\n\n"
-                "Добавьте в него слова из 5 букв (по одному на строку)."
-            )
-            return []
-        
-        return words
-        
-    except Exception as e:
-        messagebox.showerror("Ошибка", f"Не удалось прочитать файл {filepath}:\n{e}")
-        return []
+    
+    with open(filepath, "r", encoding="utf-8") as f:
+        for line in f:
+            word = line.strip().upper()
+            if len(word) == 5 and word.isalpha():
+                words.append(word)
+    
+    return words
 
 #  СОХРАНЕНИЕ СЛОВА В СЛОВАРЬ
 def save_word_to_file(word):
