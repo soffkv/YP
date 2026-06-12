@@ -972,11 +972,3 @@ class WordleGame:
         
         if char in eng_to_rus:
             self.add_letter(eng_to_rus[char])
-
-
-# ТОЧКА ВХОДА 
-
-if __name__ == "__main__":
-    root = tk.Tk()
-    game = WordleGame(root)
-    root.mainloop()
